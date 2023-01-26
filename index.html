@@ -1,0 +1,147 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .calculator {
+    width: 250px;
+    margin: 50px auto;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.display {
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+    font-size: 36px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    margin: 0 10px 10px 0;
+    float: left;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.operator {
+    background-color: #f1f1f1;
+}
+
+.clear {
+    background-color: #ff0000;
+    color: #fff;
+}
+.calculator {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    flex: 1;
+    margin: 10px;
+}
+.calculator {
+    background-color: #ADD8E6; /* Light blue */
+}
+
+button {
+    background-color: #F0E68C; /* Khaki */
+}
+
+.operator {
+    background-color: #FFA07A; /* Light salmon */
+}
+button:hover {
+    background-color: #FFFF00; /* Yellow */
+}
+.display {
+    color: #000000; /* Black */
+}
+.calculator {
+    background-image: url("pexels-rostislav-uzunov-5011647.jpg");
+
+}
+
+
+
+
+.equal {
+    background-color: #00ff00;
+    color: #fff;
+}
+
+    
+
+</style>
+<body>
+    
+    <div class="calculator">
+        <div class="display">0</div>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="number">0</button>
+        <button class="operator">+</button>
+        <button class="operator">-</button>
+        
+        <button class="operator">*</button>
+       
+        <button class="operator">/</button>
+        
+        <button class="number">.</button>
+        <button class="clear">C</button>
+        
+        <button class="equal">=</button>
+    </div>
+    
+</body>
+<script>
+    const calculator = {
+    display: document.querySelector('.display'),
+    btns: document.querySelectorAll('button'),
+    operator: ''
+};
+
+calculator.btns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        const value = e.target.innerText;
+
+        if(isNaN(value)) {
+            if(value === 'C') {
+                calculator.display.innerText = 0;
+                calculator.operator = '';
+            } else if(value === '=') {
+                calculator.display.innerText = eval(calculator.display.innerText);
+                calculator.operator = '';
+            } else {
+                calculator.operator = value;
+                calculator.display.innerText += value;
+            }
+        } else {
+            calculator.display.innerText += value;
+        }
+    });
+});
+</script>
+</html>
